@@ -27,6 +27,7 @@ class Agent:
     def select_action(self, state):
         best_action, best_value = None, None
         for action in range(self.env.action_space.n):
+            # self.values defaultdict 中如果没有(state, action)这个key, 就增加, 然后赋值为0.0
             action_value = self.values[(state, action)]
             if best_value is None or best_value < action_value:
                 best_value = action_value
